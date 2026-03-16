@@ -20,3 +20,16 @@ def test_guess_too_low():
     outcome, message = check_guess(40, 50)
     assert outcome == "Too Low"
     assert message == "Go HIGHER!"
+
+
+def test_numeric_string_secret_too_low():
+    # Numeric string secrets should be compared numerically, not lexicographically.
+    outcome, message = check_guess(9, "10")
+    assert outcome == "Too Low"
+    assert message == "Go HIGHER!"
+
+
+def test_numeric_string_secret_too_high():
+    outcome, message = check_guess(12, "10")
+    assert outcome == "Too High"
+    assert message == "Go LOWER!"

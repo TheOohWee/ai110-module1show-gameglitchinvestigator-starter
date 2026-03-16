@@ -18,6 +18,8 @@ def parse_guess(raw: str):
     if raw is None:
         return False, None, "Enter a guess."
 
+    raw = str(raw).strip()
+
     if raw == "":
         return False, None, "Enter a guess."
 
@@ -38,21 +40,20 @@ def check_guess(guess, secret):
 
     outcome examples: "Win", "Too High", "Too Low"
     """
-    if guess == secret:
+    try:
+        guess_value = int(guess)
+        secret_value = int(secret)
+    except (TypeError, ValueError):
+        # Fallback for unexpected non-numeric values.
+        guess_value = str(guess)
+        secret_value = str(secret)
+
+    if guess_value == secret_value:
         return "Win", "Correct!"
 
-    try:
-        if guess > secret:
-            return "Too High", "Go LOWER!"
-        return "Too Low", "Go HIGHER!"
-    except TypeError:
-        # Handle mixed int/str comparisons used by the app's debug flow.
-        g = str(guess)
-        if g == secret:
-            return "Win", "Correct!"
-        if g > secret:
-            return "Too High", "Go LOWER!"
-        return "Too Low", "Go HIGHER!"
+    if guess_value > secret_value:
+        return "Too High", "Go LOWER!"
+    return "Too Low", "Go HIGHER!"
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
