@@ -47,9 +47,7 @@ Detailed process notes are in `reflection.md`.
 
 ## 📸 Demo
 
-Insert your winning-game screenshot after capturing it:
-
-`![Winning game screenshot](images/fixed-win.png)`
+![Winning game screenshot](<images/game screenshot.png>)
 
 ## 🚀 Stretch Features
 
