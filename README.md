@@ -12,7 +12,7 @@ It wrote the code, ran away, and now the game is unplayable.
 ## 🛠️ Setup
 
 1. Install dependencies: `pip install -r requirements.txt`
-2. Run the broken app: `python -m streamlit run app.py`
+2. Run the app: `python -m streamlit run app.py`
 
 ## 🕵️‍♂️ Your Mission
 
@@ -25,14 +25,34 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+### Purpose
+This project is a Streamlit number-guessing game used to practice debugging AI-generated code, fixing state-management issues, and improving testability through refactoring.
+
+### Bugs Found
+- Hint direction bug: too-high guesses told players to go higher.
+- State reset bug: new games did not fully reset game state.
+- Attempt counter bug: attempts started at `1` instead of `0`.
+- Difficulty consistency bug: range messaging/reset behavior did not always match difficulty.
+- Type comparison bug: mixed numeric types could produce incorrect comparisons.
+
+### Fixes Applied
+- Moved game logic functions into `logic_utils.py` and imported them in `app.py`.
+- Corrected hint direction logic in `check_guess`.
+- Fixed session-state initialization and full reset behavior for new games/difficulty changes.
+- Standardized numeric comparisons in `check_guess`.
+- Updated and expanded tests in `tests/test_game_logic.py`.
+- Added `pytest.ini` to stabilize import resolution during test runs.
+
+Detailed process notes are in `reflection.md`.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+Insert your winning-game screenshot after capturing it:
+
+`![Winning game screenshot](images/fixed-win.png)`
 
 ## 🚀 Stretch Features
 
-- [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
+If you complete Challenge 4, add another screenshot here:
+
+`![Enhanced game UI](images/stretch-ui.png)`
