@@ -48,9 +48,3 @@ Detailed process notes are in `reflection.md`.
 ## 📸 Demo
 
 ![Winning game screenshot](<images/game screenshot.png>)
-
-## 🚀 Stretch Features
-
-If you complete Challenge 4, add another screenshot here:
-
-`![Enhanced game UI](images/stretch-ui.png)`
